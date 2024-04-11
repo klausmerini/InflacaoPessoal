@@ -1,19 +1,19 @@
 ----------------------------------------------------------------
-Fri Apr 05 15:48:11 BRT 2024:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instância a816c00e-018e-af96-fb06-000000e1cc78
-no diretório de banco de dados /home/klausmerini/git/repository/derbyAgenda/agendaDerby 
+Thu Apr 11 20:09:14 BRT 2024:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instância a816c00e-018e-cf6c-2139-0000034db0e8
+no diretório de banco de dados /home/klausmerini/eclipse/derbyAgenda/agendaDerby 
 
 java.vendor=Eclipse Adoptium
 java.runtime.version=17.0.9+9
-user.dir=/home/klausmerini/git/repository/derbyAgenda
+user.dir=/home/klausmerini/eclipse/derbyAgenda
 os.name=Linux
 os.arch=amd64
 os.version=5.0.11
 derby.system.home=null
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
 ----------------------------------------------------------------
-Fri Apr 05 15:48:14 BRT 2024: Shutting down Derby engine
+Thu Apr 11 20:09:20 BRT 2024: Shutting down Derby engine
 ----------------------------------------------------------------
-Fri Apr 05 15:48:14 BRT 2024:
-Encerrando a instância a816c00e-018e-af96-fb06-000000e1cc78
+Thu Apr 11 20:09:21 BRT 2024:
+Encerrando a instância a816c00e-018e-cf6c-2139-0000034db0e8
 ----------------------------------------------------------------

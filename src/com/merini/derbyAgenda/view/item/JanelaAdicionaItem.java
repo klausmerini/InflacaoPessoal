@@ -113,7 +113,7 @@ public class JanelaAdicionaItem extends JanelaCrud implements  ActionListener
 		ArrayList<String> labels = new ArrayList<String>();
 		labels.add("nome");
 		labels.add("cor");
-		labels.add("descri��o");
+		labels.add("descrição");
 		labels.add("lugar");
 		labels.add("lista");
 		
@@ -135,8 +135,7 @@ public class JanelaAdicionaItem extends JanelaCrud implements  ActionListener
 		this.add(salvarButton);
 		this.add(adicalistaButton);
 		this.add(listaComprasButton);
-	}
-	
+	}	
 
 	public void montaComboListas()
 	{
@@ -189,7 +188,6 @@ public class JanelaAdicionaItem extends JanelaCrud implements  ActionListener
 	
 	public void preencheCampos(Item item)
 	{
-	//	try{
 		nomeItemTextField.setText(item.getNomeItem());
 		descricaoTextField.setText(item.getDescricao());
 		lugarTextField.setText(item.getLugar().toString());
@@ -197,11 +195,6 @@ public class JanelaAdicionaItem extends JanelaCrud implements  ActionListener
 		corTextField.setText(item.getCor());
 		
 		verificaESetaListaSelecionada();
-//	}
-//		catch(Exception e)
-//		{
-//			
-//		}
 	}
 
 	public void verificaESetaListaSelecionada()

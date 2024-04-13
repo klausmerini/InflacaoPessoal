@@ -17,8 +17,7 @@ public class ComandoExibeListas
 		if (comando.equals("Exibe Lista selecionada")) 
 		{
 			nomeListaSelec=nomeListaSelecionada;
-			System.out.println("nome Lista Selecionada "+ nomeListaSelec);
-			
+				System.out.println("ComandoExibeListas.processaComando.nome Lista Selecionada "+ nomeListaSelec);			
 //			try {
 //				this.janelaLista.getFrame().dispose();
 //			} catch (Exception e) {				// TODO Auto-generated catch block

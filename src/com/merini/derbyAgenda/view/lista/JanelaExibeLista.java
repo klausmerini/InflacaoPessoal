@@ -19,7 +19,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import com.merini.derbyAgenda.comando.item.ComandoExcluirItem;
 import com.merini.derbyAgenda.comando.item.ComandoIncluirItem;
+import com.merini.derbyAgenda.comando.lista.ComandoExcluirLista;
 import com.merini.derbyAgenda.view.JanelaCrud;
 
 
@@ -30,7 +32,7 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 	
 	private JButton botaoEditar = new JButton("editar");
 	private JButton botaoAtualizar = new JButton("Atualizar");
-	private JButton botaoGerarLista = new JButton("Gerar Nova Lista");
+	private JButton botaoExcluirLista = new JButton("Excluir Lista");
 	private JButton botaoAdicionar= new JButton("Adicionar Item");
 	private JButton botaoExcluirDaLista = new JButton("Excluir Item da lista");	
 	private JButton botaoStatus = new JButton("Alterar Status");
@@ -58,15 +60,15 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 	public void actionPerformed(ActionEvent e) 
 	{		// TODO Auto-generated method stub
 		
-		if(e.getSource().equals(botaoGerarLista))
+		if(e.getSource().equals(botaoExcluirLista))
 		{
-			int[]  linhasSelecionInt = tabela.getSelectedRows();
-			ArrayList<String> arrayNomes =  recuperaNomesItensSelecionadosNaTabela(linhasSelecionInt);
-			ArrayList<String> arrayIdItens=  recuperaIdsItensSelecionadosNaTabela(linhasSelecionInt);
+//			int[]  linhasSelecionInt = tabela.getSelectedRows();
+//			ArrayList<String> arrayNomes =  recuperaNomesItensSelecionadosNaTabela(linhasSelecionInt);
+//			ArrayList<String> arrayIdItens=  recuperaIdsItensSelecionadosNaTabela(linhasSelecionInt);
 			
-//			c.comentaLocalizCamadaView("Actionperformed","qtd linhas selec - ", String.valueOf(arrayIdItens.size()));
-//			ComandoIncluirLista comando = new ComandoIncluirLista();
-//			comando.processaComando("Incluir Lista no banco", nomeListaSt, arrayIdItens );
+	//		c.comentaLocalizCamadaView("Actionperformed","","");
+			ComandoExcluirLista comando = new ComandoExcluirLista();
+			comando.processaComando("Exclui Lista", nomeListaSt);
 		}
 			
 		int[]  linhasSelecionInt = tabela.getSelectedRows();
@@ -92,9 +94,9 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 		
 		if(e.getSource().equals(botaoExcluirDaLista))
 		{
-//			String nomePendenciaEdi = recuperaNomeItemSelecionadoNaTabela();
-//			ComandoExcluirItem comando = new ComandoExcluirItem();
-//			comando.processaComando("Exclui Item", nomePendenciaEdi);	
+			String nomeItemEdi = recuperaNomeItemSelecionadoNaTabela();
+			ComandoExcluirItem comando = new ComandoExcluirItem();
+			comando.processaComando("Exclui Item", nomeItemEdi, nomeListaSt);	
 		}
 		
 	
@@ -103,7 +105,7 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 	public void configuraJanela() 
 	{
 		botaoEditar.addActionListener(this);
-		botaoGerarLista.addActionListener(this);
+		botaoExcluirLista.addActionListener(this);
 		botaoAtualizar.addActionListener(this);
 		botaoAdicionar.addActionListener(this);
 		botaoStatus.addActionListener(this);
@@ -144,7 +146,7 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
         painelFundo.add(barraRolagem);
         
     	painelInferior.add(botaoEditar);	
-		painelInferior.add(botaoGerarLista);
+		painelInferior.add(botaoExcluirLista);
 		painelInferior.add(botaoAtualizar);
 		painelInferior.add(botaoAdicionar);
 		painelInferior.add(botaoStatus);

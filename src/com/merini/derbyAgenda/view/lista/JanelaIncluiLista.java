@@ -54,16 +54,15 @@ public class JanelaIncluiLista extends JanelaCrud implements ActionListener
 		Lista l =  montaLista();				
 		if (e.getSource().equals(salvarButton))
 		{
-			c.comentaLocalizacao("actionPerformed",e.getSource().toString());
+				c.comentaLocalizacao("actionPerformed",e.getSource().toString());
 			ComandoIncluirLista comando = new ComandoIncluirLista();
 			
 			try {
-				comando.processaComando("Incluir Lista no banco", l,comboTipoLista.getSelectedItem().toString());
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-		//		comando.processaComando("Incluir Lista no banco sem tipo lista", l);
-			}		
+				comando.processaComando("Incluir Lista no banco", l,comboTipoLista.getSelectedItem().toString());		} 
+			catch (Exception e1) {
+				e1.printStackTrace();			}		
+			ComandoExibeListas comando2 = new ComandoExibeListas();
+			comando2.processaComando("Exibe Lista selecionada", nomeListaTextField.getText());	
 		}		
 //		if (e.getSource().equals(adicalistaButton))
 //		{
@@ -73,7 +72,7 @@ public class JanelaIncluiLista extends JanelaCrud implements ActionListener
 //		}
 		if (e.getSource().equals(selecionaListaButton))
 		{
-			c.comentaLocalizacao("actionPerformed",e.getSource().toString());
+				c.comentaLocalizacao("actionPerformed",e.getSource().toString());
 			ComandoExibeListas comando = new ComandoExibeListas();
 			comando.processaComando("Exibe Lista selecionada", comboTipoLista.getSelectedItem().toString());		
 		}	

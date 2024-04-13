@@ -17,16 +17,35 @@ public class ItemlistaDAO extends DAOAbstrato implements FacadeInterf
 	private String sqlInsertItemlista = "INSERT INTO itemlista (idlista, iditem) values (";
 	private String sqlRecuperaTodosPorLista = "SELECT descricao, nomeitem, lugar, cor, il.iditem FROM item i, itemlista il, lista l "
 	+ "WHERE il.iditem = i.iditem AND il.idlista = l.idlista AND l.nomelista = '";
-
+	private String sqlExcluiItemlista = "DELETE FROM itemlista WHERE iditem = ";
+	private String sqlExcluiItemlistaP2 = "AND idlista = ";
 
 	public Object carregar(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void excluir(Integer id) {
-		// TODO Auto-generated method stub
-		
+	public int excluir(String idLista, String idItem) 
+	{
+			System.out.println("ItemlistaDAO.gravar");
+		String sql = sqlExcluiItemlista+idLista+sqlExcluiItemlistaP2+idItem;
+		Connection connection = conecta();		
+		System.out.println(sql);
+		try 
+		{
+				Statement stmt = connection.createStatement();
+				int resultado = stmt.executeUpdate(sql);
+				stmt.close();
+				connection.close();
+					System.out.println("itemlista excluido, status code : "+String.valueOf(resultado));
+				shutDown();
+				return resultado;
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();		
+		}
+		return (Integer) null;
 	}
 
 	public Object gravar(Integer idlistaInt, Integer iditemInt) 
@@ -44,7 +63,7 @@ public class ItemlistaDAO extends DAOAbstrato implements FacadeInterf
 				int resultado = stmt.executeUpdate(sql);
 				stmt.close();
 				connection.close();
-					System.out.println("itemlista recuperada : ");
+					System.out.println("itemlista gravado, status code : "+String.valueOf(resultado));
 				shutDown();
 				return resultado;
 		} 

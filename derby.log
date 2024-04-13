@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Apr 11 20:09:14 BRT 2024:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instância a816c00e-018e-cf6c-2139-0000034db0e8
+Sat Apr 13 10:06:11 BRT 2024:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instância a816c00e-018e-d790-bdeb-0000014ef3c0
 no diretório de banco de dados /home/klausmerini/eclipse/derbyAgenda/agendaDerby 
 
 java.vendor=Eclipse Adoptium
@@ -11,9 +11,3 @@ os.arch=amd64
 os.version=5.0.11
 derby.system.home=null
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-----------------------------------------------------------------
-Thu Apr 11 20:09:20 BRT 2024: Shutting down Derby engine
-----------------------------------------------------------------
-Thu Apr 11 20:09:21 BRT 2024:
-Encerrando a instância a816c00e-018e-cf6c-2139-0000034db0e8
-----------------------------------------------------------------

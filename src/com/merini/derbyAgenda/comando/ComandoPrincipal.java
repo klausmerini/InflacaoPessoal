@@ -16,12 +16,12 @@ public class ComandoPrincipal extends Comandos
 //			System.out.println("main");
 //		comando.processaComando("Cria Janela Inclui Classificacao");
 		
-		ComandoIncluirItem comando;
-		comando = new ComandoIncluirItem();
-		comando.processaComando("constroi interface adiciona item","Caderno do Monstro");
+//		ComandoIncluirItem comando;
+//		comando = new ComandoIncluirItem();
+//		comando.processaComando("constroi interface adiciona item","Caderno do Monstro");
 	
-//		comando = new ComandoIncluirLista();
-//		comando.processaComando( "Constroi interface inclui lista");
+		ComandoIncluirLista comando = new ComandoIncluirLista();
+		comando.processaComando( "Constroi interface inclui lista");
 		
 	//	ComandoGerenciaClassificacao comando = new ComandoGerenciaClassificacao();
 			System.out.println("main");

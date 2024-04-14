@@ -48,16 +48,17 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 
 	public Item gravar(Item item) 
 	{
-		System.out.println("ItemDAO.gravar");
+			System.out.println("ItemDAO.gravar");
 		Connection connection = conecta();
 		Item itemGr = (Item) item;
-		sqlInsertItem= sqlInsertItem
+		String sql = sqlInsertItem
 				+ itemGr.getNomeItem()+"', '"+itemGr.getCor()+"', '"
 				+ itemGr.getDescricao()+"')";
+		System.out.println(sql);
 		try 
 		{
 				Statement stmt = connection.createStatement();
-				int resultado = stmt.executeUpdate(sqlInsertItem);
+				int resultado = stmt.executeUpdate(sql);
 				itemGr = (Item) carregar(itemGr.getNomeItem());
 				connection.close();
 					System.out.println("item gravado e recuperado : "+itemGr.getNomeItem());

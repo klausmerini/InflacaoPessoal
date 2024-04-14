@@ -86,6 +86,8 @@ public class JanelaAdicionaItem extends JanelaCrud implements  ActionListener
 			else
 			{
 				ComandoIncluirItem comando = new ComandoIncluirItem();
+					c.comentaIteracaoView(i.getNomeItem());
+					c.comentaIteracaoView(i.getDescricao());
 				comando.processaComando("inclui item no banco de dados", i,comboListas.getSelectedItem().toString());	
 				this.dispose();
 				ComandoExibeListas comando2 = new ComandoExibeListas();

@@ -3,6 +3,7 @@ package com.merini.derbyAgenda.comando.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.merini.derbyAgenda.modelo.Comentario;
 import com.merini.derbyAgenda.modelo.Item;
 import com.merini.derbyAgenda.view.item.JanelaAdicionaItem;
 import com.merini.derbyAgenda.view.lista.JanelaExibeLista;
@@ -10,7 +11,7 @@ import com.merini.derbyAgenda.view.lista.JanelaExibeLista;
 
 public class ComandoEditarItem //extends ItemCommand
 {	
-	
+	Comentario c = new Comentario();
 	JanelaAdicionaItem janela =null;
 	
 	public void processaComando(String comando, String nomePend, String idAgenda) 
@@ -26,7 +27,7 @@ public class ComandoEditarItem //extends ItemCommand
 	//		hor.setIdpendencia(pend);
 	//		facadeItem.editarObj(item);
 			
-			String nomeLista = cp.getComandoExibeListas().getNomeListaSelec();
+	//		String nomeLista = cp.getComandoExibeListas().getNomeListaSelec();
 		//	c.comentaLocalizacao("nome Lista Selecionada", nomeLista);
 			try {
 			//	cp.getComandoExibeListas().getJanelaLista().getFrame().dispose();
@@ -61,7 +62,7 @@ public class ComandoEditarItem //extends ItemCommand
 				System.out.println("primeira janela de editar pendencia n�o foi achada, instancia uma nova");
 				//e.printStackTrace();
 			}
-			janela =  new JanelaAdicionaItem("Janelda Edita Item",itemEdit, arrayNomeClSt);
+//			janela =  new JanelaAdicionaItem("Janelda Edita Item",itemEdit, arrayNomeClSt);
 		}
 		else
 		{
@@ -71,10 +72,10 @@ public class ComandoEditarItem //extends ItemCommand
 	
 	public void processaComando(String comando, String nomeItemSelecionadoEdi) 
 	{		// TODO Auto-generated method stub
-		Item itemEdit = (Item) facadeItem.recuperaPorNome(nomeItemSelecionadoEdi);
-		//Item itemEdit = (Item) facadeItem.carregar(id);
-		c.comentaLocalizacao("processaComando", nomeItemSelecionadoEdi);
-		String[] arrayNomeClSt =  recuperaNomesDasListas();
+//		Item itemEdit = (Item) facadeItem.recuperaPorNome(nomeItemSelecionadoEdi);
+//		//Item itemEdit = (Item) facadeItem.carregar(id);
+//		c.comentaLocalizacao("processaComando", nomeItemSelecionadoEdi);
+//		String[] arrayNomeClSt =  recuperaNomesDasListas();
 		
 		if (comando.equals("Exibe interface Altera Item"))
 		{
@@ -82,7 +83,7 @@ public class ComandoEditarItem //extends ItemCommand
 				janela.dispose();		} 
 			catch (Exception e) {				// TODO Auto-generated catch block
 				System.out.println("primeira janela de editar pendencia n�o foi achada, instancia uma nova");}				//e.printStackTrace();			}
-			janela =  new JanelaAdicionaItem("Janelda Edita Item",itemEdit, arrayNomeClSt);
+	//		janela =  new JanelaAdicionaItem("Janelda Edita Item",itemEdit, arrayNomeClSt);
 		}
 		else
 		{	c.comentaErro("comando errado");	}	
@@ -99,12 +100,6 @@ public class ComandoEditarItem //extends ItemCommand
 //		
 //	}
 	
-	
-	@Override
-	public void processaComando(String comando) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 
 }

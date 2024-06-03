@@ -4,6 +4,6 @@ Design Patterns : DataAccessObject DAO, Command, 3 tier MVC. O aplicativo não n
 
 ![Captura de tela janela lista](https://github.com/klausmerini/derbyAgenda/assets/109608171/6f93a3fd-3454-4c10-9eda-593cb77ae7a3)
 
-![Captura de tela de 2024-04-22 19-45-18](https://github.com/klausmerini/derbyAgenda/assets/109608171/e2163d81-2c00-4829-995b-9bbc1f215788)
+![Captura de tela de 2024-06-03 10-05-56](https://github.com/klausmerini/derbyAgenda/assets/109608171/4cb59685-1905-420d-a374-4b03ea1f46cd)
 
 ![Captura de tela de 2024-06-03 10-05-56](https://github.com/klausmerini/derbyAgenda/assets/109608171/4cb59685-1905-420d-a374-4b03ea1f46cd)

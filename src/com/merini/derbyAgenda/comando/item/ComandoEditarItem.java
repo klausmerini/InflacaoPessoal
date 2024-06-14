@@ -3,6 +3,7 @@ package com.merini.derbyAgenda.comando.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.merini.derbyAgenda.dao.ItemDAO;
 import com.merini.derbyAgenda.modelo.Comentario;
 import com.merini.derbyAgenda.modelo.Item;
 import com.merini.derbyAgenda.view.item.JanelaAdicionaItem;
@@ -73,9 +74,10 @@ public class ComandoEditarItem //extends ItemCommand
 	public void processaComando(String comando, String nomeItemSelecionadoEdi) 
 	{		// TODO Auto-generated method stub
 //		Item itemEdit = (Item) facadeItem.recuperaPorNome(nomeItemSelecionadoEdi);
-//		//Item itemEdit = (Item) facadeItem.carregar(id);
+		ItemDAO itemDAO = new ItemDAO();
+		Item itemEdit =  itemDAO.carregar(nomeItemSelecionadoEdi);
 //		c.comentaLocalizacao("processaComando", nomeItemSelecionadoEdi);
-//		String[] arrayNomeClSt =  recuperaNomesDasListas();
+		String[] arrayNomeClSt =  recuperaNomesDasListas();
 		
 		if (comando.equals("Exibe interface Altera Item"))
 		{
@@ -83,10 +85,15 @@ public class ComandoEditarItem //extends ItemCommand
 				janela.dispose();		} 
 			catch (Exception e) {				// TODO Auto-generated catch block
 				System.out.println("primeira janela de editar pendencia n�o foi achada, instancia uma nova");}				//e.printStackTrace();			}
-	//		janela =  new JanelaAdicionaItem("Janelda Edita Item",itemEdit, arrayNomeClSt);
+			janela =  new JanelaAdicionaItem("Janelda Edita Item",itemEdit, arrayNomeClSt);
 		}
 		else
 		{	c.comentaErro("comando errado");	}	
+	}
+
+	private String[] recuperaNomesDasListas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 //

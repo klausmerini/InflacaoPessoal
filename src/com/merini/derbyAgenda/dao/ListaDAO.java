@@ -162,6 +162,37 @@ public class ListaDAO extends DAOAbstrato implements FacadeInterf
 			return null;		
 		}
 		
+	
+		public Object[] obterTodosNomesArray() 
+		{		// TODO Auto-generated method stub
+			c.comentaLocalizCamadaDAO("obterTodosNomes", this.getClass().toString(),"");
+			Connection connection = conecta();
+			try 
+			{
+					PreparedStatement preparedStatement = connection.prepareStatement(sqlSelecionaNomesLista);
+					ResultSet resultSet = preparedStatement.executeQuery();
+					String name;
+					ArrayList<String> arrayNomesListas = new ArrayList<String>();
+					while(resultSet.next())
+					{
+						name = resultSet.getString("nomelista").trim();
+						System.out.printf("nome do item : %s\n",name);
+						arrayNomesListas.add(name);
+					}
+					resultSet.close();
+					preparedStatement.close();
+					connection.close();
+						System.out.println("nome dos itens recuperado");
+					shutDown();
+					return arrayNomesListas.toArray();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();		
+			}
+			return null;		
+		}
+		
 		
 		
 		

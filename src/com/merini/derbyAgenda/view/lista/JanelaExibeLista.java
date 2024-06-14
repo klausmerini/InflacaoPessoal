@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import com.merini.derbyAgenda.comando.item.ComandoEditarItem;
 import com.merini.derbyAgenda.comando.item.ComandoExcluirItem;
 import com.merini.derbyAgenda.comando.item.ComandoIncluirItem;
 import com.merini.derbyAgenda.comando.lista.ComandoExcluirLista;
@@ -75,12 +76,11 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 		
 		if(e.getSource().equals(botaoEditar))
 		{
-//			c.comentaLocalizacao("actionPerformed() bot�o editar");
-//			ComandoEditarItem comando = cp.getComandoEditarItem();
-//			String nomePendenciaEdi = recuperaNomeItemSelecionadoNaTabela();
-////			int idItemSelec = recuperaIdItemSelecionadoNaTabela();
-//		//	c.comentaValor(" nome do item q ser� editado ", "'"+recuperaNomeItemSelecionadoNaTabela()+"'");
-//			comando.processaComando("Exibe interface Altera Item",nomePendenciaEdi );
+			System.out.println("actionPerformed() bot�o editar");;
+			ComandoEditarItem comando = new ComandoEditarItem();
+			String nomePendenciaEdi = recuperaNomeItemSelecionadoNaTabela();
+		//	c.comentaValor(" nome do item q ser� editado ", "'"+recuperaNomeItemSelecionadoNaTabela()+"'");
+			comando.processaComando("Exibe interface Altera Item",nomePendenciaEdi );
 		}
 		
 		

@@ -103,8 +103,8 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 		return null;		
 	}
 
-	@Override
-	public Object carregar(String nomeItem) {
+	//@Override
+	public Item carregar(String nomeItem) {
 		Connection connection = conecta();
 		Item item = new Item();
 		try 

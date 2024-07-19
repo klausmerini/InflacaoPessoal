@@ -29,7 +29,7 @@ public class CT1IncluirItemDAOTest
 			+ "','Azul Escuro',"
 			+ " '"+descricaoSt+"')";
 	private String sqlCreateTableItem  = "CREATE TABLE item (iditem INT NOT NULL GENERATED ALWAYS AS IDENTITY, nomeitem VARCHAR(200), cor VARCHAR(70), lugar VARCHAR(200), descricao VARCHAR(700), PRIMARY KEY(iditem))";
-
+	private String sqlAlterTableItem  ="ALTER TABLE itemlista ADD COLUMN valor(JdbcUrl)";
 	
 //	@Test
 	public void CT1verificaInclusaoBancoTest()

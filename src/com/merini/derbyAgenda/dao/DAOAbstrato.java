@@ -61,7 +61,7 @@ public abstract class DAOAbstrato //implements FacadeInterf
 	}
 
 
-	public Object carregar(String nomeClasssificacao) {
+	public Object carregar(String nomeClasssificacao) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -93,7 +93,8 @@ public abstract class DAOAbstrato //implements FacadeInterf
 			if (e.getSQLState().equals("XJ015"))
 				{System.out.println("shutdown2");}
 			else
-				{e.printStackTrace();}
+				{//e.printStackTrace();}
+				}				
 		}
 	}
 

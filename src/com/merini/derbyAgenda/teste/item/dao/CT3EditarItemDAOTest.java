@@ -23,13 +23,17 @@ public class CT3EditarItemDAOTest
 	ItemDAO dao = new ItemDAO();	
 	System.out.println("carregar "+nomeItemSt);
 
-	Item item = (Item) dao.carregar(nomeItemSt);			
-	item.setDescricao(descricaoSt);
-
-	dao.editar(item);
-	
-	
-	Item itemEditada = (Item) dao.carregar(item.getNomeItem());
+	Item item=null;
+	Item itemEditada=null;
+	try {
+		item = (Item) dao.carregar(nomeItemSt);			
+		item.setDescricao(descricaoSt);
+		dao.editar(item);
+		itemEditada = (Item) dao.carregar(item.getNomeItem());
+	} 
+	catch (SQLException e) {
+		e.printStackTrace();
+	}	
 	assertEquals(descricaoSt, itemEditada.getDescricao());
 }	
 

@@ -78,13 +78,10 @@ public class QueryTableModelListaDeCompras extends AbstractTableModel
 			iteraRSpreecheArray(numCols, rsmd, rs );
 			
 			fireTableDataChanged();			
-		} 
-		
-		catch (SQLException e) {	e.printStackTrace();	}		
-				
+		} 		
+		catch (SQLException e) {	e.printStackTrace();	}						
 		System.out.println(" numero de linhas - "+linhas.size());		
-	}
-	
+	}	
 	
 	public void iteraRSpreecheArray(int numCols, ResultSetMetaData rsmd, ResultSet rs ) throws SQLException
 	{
@@ -92,8 +89,7 @@ public class QueryTableModelListaDeCompras extends AbstractTableModel
 		{
 			System.out.println(rsmd.getColumnName(i+1));
 			colunas[i]=rsmd.getColumnName(i+1);
-		}
-					
+		}					
 		linhas.clear();
 		
 		while (rs.next())
@@ -102,8 +98,13 @@ public class QueryTableModelListaDeCompras extends AbstractTableModel
 			for (int i = 0; i < numCols; i++) 
 			{
 				l[i]=rs.getObject(i+1);
-//				String st = (String) l[i];
-//				c.comentaValor(" linha "+String.valueOf(i), String.valueOf(l[i]));
+				try {
+					String st = (String) l[i];
+				} catch (ClassCastException e) {
+					//e.printStackTrace();
+					String st = String.valueOf(l[i]);
+				}
+				c.comentaValor(" linha "+String.valueOf(i), String.valueOf(l[i]));
 			}
 			linhas.add(l);				
 		}
@@ -126,8 +127,8 @@ public class QueryTableModelListaDeCompras extends AbstractTableModel
 		String columnNameSt="";
 		if (col == 1)
 		{
-			columnNameSt="Nome do Item da Lista";
-		}
+			columnNameSt="NOME DO ITEM DA LISTA";
+		}	
 		else			
 		{
 			columnNameSt = colunas[col];
@@ -138,14 +139,11 @@ public class QueryTableModelListaDeCompras extends AbstractTableModel
 	public Object getValueAt(int rowIndex, int columnIndex) 
 	{
 		try
-		{
-			
+		{			
 			if (columnIndex == PRIMEIRA_COLUNA) 
 			{
 				
-			}
-			
-			
+			}			
 		}
 		catch (Exception e) 
 		{

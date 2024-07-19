@@ -118,23 +118,18 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 	}
 
 //	@Override
-	public void constroiInterface(String nomeListaSt) {
-		// TODO Auto-generated method stub
-	//	idAgendaSt = idAgenda;
-	//	String sql = "SELECT i.iditem, nomeitem, statusitemlista, lugar, cor FROM item i, itemlista il, lista l WHERE il.iditem = i.iditem AND il.idlista = l.idlista AND l.nomelista = '"+nomeListaSt+"';";
-	//	dados=dadosR;
-//		this.colunas=colunasR;		
-
-		String sql = "SELECT descricao, nomeitem, lugar, cor, il.iditem FROM item i, itemlista il, lista l "
+	public void constroiInterface(String nomeListaSt) 
+	{
+//		String sql = "SELECT descricao, nomeitem, lugar, cor, il.iditem FROM item i, itemlista il, lista l "
+//				+ "WHERE il.iditem = i.iditem AND il.idlista = l.idlista AND l.nomelista = '"+nomeListaSt+"'";
+		
+		String sql = "SELECT descricao, nomeitem, lugar, cor, il.iditem, il.valor, il.data FROM item i, itemlista il, lista l "
 				+ "WHERE il.iditem = i.iditem AND il.idlista = l.idlista AND l.nomelista = '"+nomeListaSt+"'";
 		
 		tm = new QueryTableModelListaDeCompras(sql);
 		tabela = new JTable(tm);
-		configuraColunas();
-	//	 tabela.setPreferredScrollableViewportSize(new Dimension(350, 50));
-		
-		BorderLayout fLayout = new BorderLayout();				
-		
+		configuraColunas();		
+		BorderLayout fLayout = new BorderLayout();					
 		JPanel painelFundo = new JPanel();
 		JPanel painelInferior = new JPanel();
 		JScrollPane barraRolagem = new JScrollPane(tabela);
@@ -153,8 +148,7 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 		painelInferior.add(botaoExcluirDaLista);
     	
 		frame.add(painelFundo,  "North");
-		frame.add(painelInferior,  "South");
-	
+		frame.add(painelInferior,  "South");	
 	}
 	
 	public void configuraColunas()
@@ -163,9 +157,6 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 		TableColumn col = tabela.getColumnModel().getColumn(4);
 		tabela.getColumnModel().removeColumn(col);
 		
-//		 String[] valores = new String[]{"Masculino", "Feminino"};
-//	     col.setCellEditor(new MyComboBoxEditor(valores));
-//	     col.setCellRenderer(new ComboBoxRenderer(valores));
 	}		    
 
 	public void exibeFrame() 
@@ -181,6 +172,18 @@ public class JanelaExibeLista implements ActionListener//InterfaceJanelaCrud ,
 			int j = linhasInt[i];
 			String nomeTabelaItSt = tabela.getValueAt (j,1).toString();
 			itensListaStArray.add(nomeTabelaItSt);
+		}
+		
+		return itensListaStArray ;		
+	}
+	
+	public ArrayList<String> recuperaNomesItensNaTabela()
+	{
+		ArrayList<String> itensListaStArray = new ArrayList<String>();
+		for (int i = 0; i < tabela.getModel().getRowCount(); i++) 
+		{
+			String nomeItemItSt = tabela.getValueAt (i,1).toString();
+			itensListaStArray.add(nomeItemItSt);
 		}
 		
 		return itensListaStArray ;		

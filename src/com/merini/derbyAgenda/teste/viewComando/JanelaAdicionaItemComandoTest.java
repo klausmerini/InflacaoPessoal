@@ -15,7 +15,7 @@ public class JanelaAdicionaItemComandoTest
 		comando = new ComandoIncluirItem();
 		comando.processaComando("constroi interface adiciona item",nomeLista );
 		try {
-			Thread.sleep(10000);	} 
+			Thread.sleep(50000);	} 
 		catch (InterruptedException e) {	e.printStackTrace();	}
 	}
 

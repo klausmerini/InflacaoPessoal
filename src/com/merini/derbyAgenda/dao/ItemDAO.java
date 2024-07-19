@@ -16,7 +16,7 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 	private static String JdbcUrl="jdbc:derby:agendaDerby;";//create=true";
 	private String sqlDeletaitem = "DELETE FROM item WHERE nomeitem = '";
 	private String sqlCarregaItem = "SELECT * FROM item WHERE nomeitem = '";
-	private String sqlInsertItem = "INSERT INTO item (nomeitem, cor, descricao) values ('";
+	private String sqlInsertItem = "INSERT INTO item (nomeitem, cor, descricao, lugar) values ('";
 	private String sqlEditar = "UPDATE item SET  nomeitem = '";
 	private String sqlDeletaItem =  "DELETE FROM item WHERE nomeitem = '";
 	
@@ -52,8 +52,11 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 		Connection connection = conecta();
 		Item itemGr = (Item) item;
 		String sql = sqlInsertItem
-				+ itemGr.getNomeItem()+"', '"+itemGr.getCor()+"', '"
-				+ itemGr.getDescricao()+"')";
+				+ itemGr.getNomeItem()+"', '"
+				+ itemGr.getCor()+"', '"
+				+ itemGr.getDescricao()+"', '"
+				+ itemGr.getLugar()
+				+"')";
 		System.out.println(sql);
 		try 
 		{
@@ -66,7 +69,7 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 				return itemGr;
 		} 
 		catch (SQLException e) 
-		{
+		{			
 			e.printStackTrace();		
 		}
 		return null;
@@ -104,11 +107,10 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 	}
 
 	//@Override
-	public Item carregar(String nomeItem) {
+	public Item carregar(String nomeItem) throws SQLException {
 		Connection connection = conecta();
 		Item item = new Item();
-		try 
-		{
+	
 				PreparedStatement preparedStatement = connection.prepareStatement(sqlCarregaItem+nomeItem+"'");
 				System.out.println(sqlCarregaItem+nomeItem+"'");
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -123,13 +125,7 @@ public class ItemDAO extends DAOAbstrato implements FacadeInterf{
 				connection.close();
 					System.out.println("classificação recuperada : "+item.getNomeItem());
 				shutDown();
-				return item;
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();		
-		}
-		return null;
+				return item;		
 	}
 
 

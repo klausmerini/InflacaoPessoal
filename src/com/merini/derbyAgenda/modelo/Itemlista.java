@@ -1,6 +1,7 @@
 package com.merini.derbyAgenda.modelo;
 
 import java.io.Serializable;
+import java.sql.Date;
 /**
  *
  * @author Klaus
@@ -8,16 +9,12 @@ import java.io.Serializable;
 
 public class Itemlista implements Serializable 
 {  
-    private Integer iditemlista;
-    
-    private Integer qtd;
-    
-    private String lugar;
-    
-    private String classificacao;
-    
-    private Item idItem;
-    
+    private Integer iditemlista;    
+    private Integer qtd;   
+	private Double valor;    
+    private Date data ;    
+	private String classificacao;    
+    private Item idItem;    
     private Lista idlista;
 
     public Itemlista() {
@@ -31,38 +28,65 @@ public class Itemlista implements Serializable
     public Itemlista(Integer iditemlista) {
         this.iditemlista = iditemlista;
     }
+    
+
+    public Date getData() {
+		return data;
+	}
 
     public Integer getIditemlista() {
         return iditemlista;
     }
 
-    public void setIditemlista(Integer iditemlista) {
-        this.iditemlista = iditemlista;
-    }
-
     public Integer getQtd() {
         return qtd;
-    }
-
-    public void setQtd(Integer qtd) {
-        this.qtd = qtd;
-    }
+    }   
 
     public Item getIditem() {
         return idItem;
-    }
-
-    public void setIditem(Item iditem) {
-        this.idItem = iditem;
     }
 
     public Lista getIdlista() {
         return idlista;
     }
 
+    public Double getValor() {
+		return valor;
+	}
+
+
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+    
+    public void setIditem(Item iditem) {
+        this.idItem = iditem;
+    }
+
+    public void setIditemlista(Integer iditemlista) {
+        this.iditemlista = iditemlista;
+    }
+    
+
     public void setIdlista(Lista idlista) {
         this.idlista = idlista;
     }
+    
+    public void setQtd(Integer qtd) {
+        this.qtd = qtd;
+    }
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+	
+	
+	
+	
+	
+	
 
     @Override
     public int hashCode() {

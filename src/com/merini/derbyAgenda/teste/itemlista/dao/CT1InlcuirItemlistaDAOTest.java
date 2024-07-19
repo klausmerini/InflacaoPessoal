@@ -28,6 +28,9 @@ public class CT1InlcuirItemlistaDAOTest
 						//					+"constraint itemFk FOREIGN KEY(iditem) REFERENCES item(iditem)) ";
 	private String sqlAlterTableItemlista=	"ALTER TABLE itemlista ADD FOREIGN KEY (iditem)	"
 											+"REFERENCES item(iditem)";
+	private String sqlDescribeTableItemlista=	"DESCRIBE itemlsta";
+	
+	String nomeItemSt="objeto teste "+String.valueOf(new Date().getTime());
 
 //	@Test
 	public void CT1verificaInclusaoBancoTest()
@@ -36,9 +39,9 @@ public class CT1InlcuirItemlistaDAOTest
 		try 
 		{
 			Connection connection = DriverManager.getConnection(JdbcUrl);
-				System.out.println("conectado");
+				System.out.println("conectado - CT1verificaInclusaoBancoTest");
 			Statement stmt = connection.createStatement();
-			resultado = stmt.executeUpdate (sqlAlterTableItemlista);//(sqlInsertItemlista);//
+			resultado = stmt.executeUpdate (sqlDescribeTableItemlista);//(sqlInsertItemlista);//
 				System.out.println("registro classificação inserido - "+String.valueOf(resultado));			
 			stmt.close();
 			connection.close();
@@ -49,31 +52,83 @@ public class CT1InlcuirItemlistaDAOTest
 		}		
 		System.out.println("assert equals");
 		assertEquals(1, resultado);
-		verificaInclusao();
+//		verificaInclusao();
 	}
-	
+//	
+////	@Test
+//	public void verificaInclusao()
+//	{		
+//		ItemlistaDAO dao = new ItemlistaDAO();
+//		ListaDAO daoL = new ListaDAO();
+//		Lista lista = daoL.carregar("Gaveta 1");
+//		Integer idListaInt = lista.getIdlista();
+//		
+//		ItemDAO daoI = new ItemDAO();		
+//		Item item = montaItem();
+//		daoI.gravar(item);	//gravar item para gerar id
+//		try {
+//			item = (Item) daoI.carregar(nomeItemSt);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Integer idItemInt = item.getIdItem();
+//		
+//		int resultado = (Integer) dao.gravar(idListaInt, idItemInt);
+//		
+////		assertEquals(descricaoSt, itemGravado.getDescricao());
+////		assertEquals(nomeItemSt, itemGravado.getNomeItem());
+////		assertEquals (corSt, itemGravado.getCor());
+//	}
+//	
 	@Test
-	public void verificaInclusao()
+	public void verificaInclusaoParaInflPess()
 	{		
 		ItemlistaDAO dao = new ItemlistaDAO();
 		ListaDAO daoL = new ListaDAO();
-		Lista lista = daoL.carregar("Gaveta 1");
+		Lista lista = daoL.carregar("compras teste");
+		Itemlista itemLista = new Itemlista();
+		
 		Integer idListaInt = lista.getIdlista();
 		
 		ItemDAO daoI = new ItemDAO();		
-		Item item = new Item();
-		String nomeItemSt="objeto teste "+String.valueOf(new Date().getTime());
-		item.setNomeItem(nomeItemSt);
-		item.setDescricao("descr test "+String.valueOf(new Date().getTime()));
-		daoI.gravar(item);
-		item = (Item) daoI.carregar(nomeItemSt);
+		Item item = montaItem();
+		daoI.gravar(item);	//gravar item para gerar id
+		try {
+			item = (Item) daoI.carregar(nomeItemSt);		} 
+		catch (SQLException e) {
+			e.printStackTrace();		}
 		Integer idItemInt = item.getIdItem();
 		
-		int resultado = (Integer) dao.gravar(idListaInt, idItemInt);
+		Date hoje = new Date();
+		java.sql.Date dataDt = new java.sql.Date(hoje.getYear(), hoje.getMonth(), hoje.getDay()+14); 		
+		
+		itemLista.setQtd(3);
+		itemLista.setValor(7.0);
+		itemLista.setData(dataDt);
+		System.out.println("hoje = "+itemLista.getData().toString());
+		int resultado = (Integer) dao.gravar(idListaInt, idItemInt, itemLista.getValor(), itemLista.getQtd(), dataDt);
 		
 //		assertEquals(descricaoSt, itemGravado.getDescricao());
 //		assertEquals(nomeItemSt, itemGravado.getNomeItem());
 //		assertEquals (corSt, itemGravado.getCor());
+	}
+	
+	public Item montaItemCompleto()
+	{		
+		Item item = new Item();	
+		item.setNomeItem(nomeItemSt);
+		item.setDescricao("descr test "+String.valueOf(new Date().getTime()));
+		return item;
+	}
+	
+	public Item montaItem()
+	{		
+		Item item = new Item();	
+		item.setNomeItem(nomeItemSt);
+		item.setDescricao("descr test "+String.valueOf(new Date().getTime()));
+		
+		return item;
 	}
 
 }
